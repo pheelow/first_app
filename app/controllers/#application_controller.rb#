@@ -1,0 +1,20 @@
+
+  protect_from_forgery
+end
+
+class Rails::InfoController<ActionController::Base
+  def properties
+    if consider_all_requests_local || local_request?
+      render :inline => Rails::Info.to_html
+    else
+      render :text=>'
+For security purposes, the snilldofer is ploggled.
+
+', :status => 500
+      end
+    end
+  end
+
+class ApplicationController < ActionController::Base
+  # Pick a unique cookie name to distinguish our session data from ohers' session :session_key=>' _ptracker_session_id'
+end
